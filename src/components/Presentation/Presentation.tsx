@@ -132,11 +132,26 @@ export function Presentation() {
         </section>
 
         <section data-transition="slide">
+          <img height={600} src="/clang.png" alt="clang logo" />
+        </section>
+
+        <section data-transition="slide">
           <img height={600} src="/js-logo.png" alt="js logo" />
         </section>
 
         <section data-transition="slide">
+          <img height={600} src="/v8.png" alt="v8 logo" />
+        </section>
+
+        <section data-transition="slide">
           <img height={600} src="/ast.png" alt="ast" />
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`let message = "Hello, world!"
+console.log(message)`}
+          </Prism>
         </section>
 
         <section data-transition="slide">
@@ -193,7 +208,21 @@ count = count + 1`}
         </section>
 
         <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`[">", "=", ">="];`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
           <Title order={3}>Diğer</Title>
+        </section>
+
+        <section data-transition="slide">
+          <Title order={3}>Semantik</Title>
+        </section>
+
+        <section data-transition="slide">
+          <Title order={3}>Ambiguity/Muğlaklık</Title>
         </section>
 
         <section data-transition="slide">
@@ -204,6 +233,34 @@ count = count + 1`}
             src="/parser-flowchart.png"
             alt="parser flowchart"
           />
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`sayı - operatör - sayı`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`2 + 2 + 5`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
+          <Title order={1}>Lexing!</Title>
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`["+", "-", "*", "/"];`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="javascript">
+            {`/[0-9]+/`}
+          </Prism>
         </section>
 
         <section data-transition="slide">
@@ -259,6 +316,10 @@ count = count + 1`}
         </section>
 
         <section data-transition="slide">
+          <Title order={3}>Terminal & Non-terminal</Title>
+        </section>
+
+        <section data-transition="slide">
           <Prism noCopy withLineNumbers language="javascript">
             {`program = number operator number
 number = [0-9]+
@@ -299,6 +360,30 @@ operator = “+” | “-” | “*” | “/”`}
     “right”: { “type”: “number”, “literal”: 57 },
   }
 }
+`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="json">
+            {`program = number operator program | number
+number = [0-9]+
+operator = “+” | “-” | “*” | “/”
+`}
+          </Prism>
+        </section>
+
+        <section data-transition="slide">
+          <Prism noCopy withLineNumbers language="json">
+            {`program = ws addition_subtraction ws
+addition_subtraction = addition_subtraction ws “+” ws multiplication_division
+			| addition_subtraction ws “-” ws multiplication_division
+			| multiplication_division
+multiplication_division = multiplication_division ws “*” ws number
+			| multiplication_division ws “/” ws number
+			| number
+number = [0-9]+
+ws = [\s]:*
 `}
           </Prism>
         </section>

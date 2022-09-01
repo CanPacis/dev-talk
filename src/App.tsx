@@ -33,6 +33,17 @@ function compileGrammar(grammar: string) {
   return module.exports as CompiledRules | { error: string };
 }
 
+const maths = `program -> ws addition_subtraction ws
+addition_subtraction -> addition_subtraction ws "+" ws multiplication_division
+			| addition_subtraction ws "-" ws multiplication_division
+			| multiplication_division
+multiplication_division -> multiplication_division ws "*" ws number
+			| multiplication_division ws "/" ws number
+			| number
+
+number -> [0-9]:+
+ws -> [\s]:*`;
+
 function App() {
   const [grammar, setGrammar] = useRecoilState(grammarStore);
 
@@ -96,7 +107,11 @@ function App() {
               });
             }
           } else {
-            console.log("no parser");
+            showNotification({
+              title: "Error running test",
+              message: "No parser found. Compile a grammar first.",
+              color: "red",
+            });
           }
         }}
       />
@@ -106,7 +121,7 @@ function App() {
             <Editor
               onReady={(controller) => (codeController.current = controller)}
               language="plain"
-              value='main -> "program"'
+              value={maths}
               options={{
                 tabSize: 2,
               }}
