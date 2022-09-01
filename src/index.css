@@ -1,0 +1,62 @@
+:root {
+  --toolbar-height: 50px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar-wrapper {
+  background-color: var(--vscode-editor-background);
+  height: calc(var(--toolbar-height) - 2px);
+  display: flex;
+  align-items: center;
+  padding: 0 0.6em;
+  border-bottom: 2px solid var(--vscode-badge-background);
+}
+
+.editors {
+  display: flex;
+}
+
+.vertical-editors {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-editors div:first-child {
+  flex: 4;
+}
+
+.editor-wrapper {
+  flex: 2;
+  height: calc(100vh - var(--toolbar-height));
+  border-bottom: 2px solid var(--vscode-badge-background);
+  border-right: 2px solid var(--vscode-badge-background);
+}
+
+.navigate-right,
+.navigate-left {
+  display: none;
+}
+
+.mantine-Prism-lineNumber {
+  margin-right: 20px;
+}
+
+.mantine-Prism-lineContent {
+  width: auto;
+}
+
+pre {
+  font-size: 1.4em !important;
+}
+
